@@ -8,7 +8,7 @@ LDFLAGS=-L/usr/local/cuda/lib64
 
 # build the main program
 main: src/main.o src/convolve.o
-	nvcc $(NVCCFLAGS) $(LDFLAGS) -o $@ $^ -lcublas
+	nvcc $(NVCCFLAGS) $(LDFLAGS) -o $@ $^
 
 # remove all build artifacts
 clean:
