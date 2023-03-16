@@ -1,4 +1,3 @@
-#include <config.h>
 #include <cassert>
 
 /* nvcc compiles *.cu files as C++, whereas the remainder of our source code

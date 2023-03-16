@@ -35,13 +35,13 @@ int main(const int argc, const char *argv[]) {
     q[i] /= sum_q;
   }
 
-  cudaMemPrefetchAsync(p, m*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(q, n*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(r_v0, (m + n - 1)*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(r_v1, (m + n - 1)*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(r_v2, (m + n - 1)*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(r_v3, (m + n - 1)*sizeof(float), device, cudaStreamDefault);
-  cudaMemPrefetchAsync(r_v4, (m + n - 1)*sizeof(float), device, cudaStreamDefault);
+  cudaMemPrefetchAsync(p, m*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(q, n*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(r_v0, (m + n - 1)*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(r_v1, (m + n - 1)*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(r_v2, (m + n - 1)*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(r_v3, (m + n - 1)*sizeof(float), 0, cudaStreamDefault);
+  cudaMemPrefetchAsync(r_v4, (m + n - 1)*sizeof(float), 0, cudaStreamDefault);
 
   struct timeval s, e;
 
@@ -111,7 +111,6 @@ int main(const int argc, const char *argv[]) {
   cudaFree(r_v2);
   cudaFree(r_v3);
   cudaFree(r_v4);
-  cuda_term();
 
   return 0;
 }
